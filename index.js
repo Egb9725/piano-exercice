@@ -19,6 +19,15 @@ document.addEventListener('keydown', function(event) {
             key.classList.remove('playing');
         });
     }
+    // Ajoute un écouteur d'événement de clic de souris
+document.addEventListener('click', function(event) {
+    // Vérifie si le clic a été effectué sur un élément de touche de piano
+    if (event.target.matches(pianoKeySelector)) {
+        // Récupère le code de la touche à partir de l'attribut data-key
+        const keyCode = event.target.getAttribute('data-key');
+        // Appelle la fonction pour jouer le son avec le code de touche
+        playSound(keyCode);
+    }
 });
 
 
