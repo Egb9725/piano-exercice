@@ -1,20 +1,42 @@
 // Ajoute un écouteur d'événement de pression de touche
 document.addEventListener('keydown', function(event) {
-    const audio = document.querySelector(`audio[data-key="${event.code}"]`);// Sélectionne l'élément audio correspondant à la touche pressée
+   
+    const audio = document.querySelector(`audio[data-key="${event.keycode}"]`);// Sélectionne l'élément audio correspondant à la touche pressée
+
+    const key = document.querySelector(`div[data-key="${event.keyCode}"]`);
+
     // Vérifie si un élément audio correspondant a été trouvé
     if (audio) {
         audio.play();  
     }
 
+    if (key) {
+        key.classList.add('playing'); // Ajoute la classe 'playing' à l'élément piano pour appliquer un style visuel
+ 
+ 
+        // Ajoute un écouteur d'événement de fin de transition pour supprimer la classe 'playing' une fois la transition terminée
+        key.addEventListener('transitionend', function() {
+            key.classList.remove('playing');
+        });
+    };
+ 
 })
 
 
 /*
 // cas pour n'est pas utiliser la propriété keycode
-function soundPlayer(key){
-    if (!key) return;
-    const pianoPlay=document.querySelector('audio[data-key="${key}"]')
-    pianoPlay.play();
+function soundPlayer(keyCode){
+    if (!keyCode) return;
+
+    const selector = '[data-key="${keyCode}]'
+
+    const sound=document.querySelector('audio${selector}')
+
+    const key=document.querySelector('key${selector}')
+
+    sound.play();
+
+    
 
 }
 
