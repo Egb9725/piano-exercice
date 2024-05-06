@@ -10,17 +10,10 @@ document.addEventListener('keydown', function(event) {
         audio.play();  
     }
 
-    if (key) {
-        key.classList.add('playing'); // Ajoute la classe 'playing' à l'élément piano pour appliquer un style visuel
- 
- 
-        // Ajoute un écouteur d'événement de fin de transition pour supprimer la classe 'playing' une fois la transition terminée
-        key.addEventListener('transitionend', function() {
-            key.classList.remove('playing');
-        });
-    };
- 
-})
+    
+}) 
+
+
 
 
 /*
@@ -34,15 +27,30 @@ function soundPlayer(keyCode){
 
     const key=document.querySelector('key${selector}')
 
+    key.classList.add("play");
+
     sound.play();
 
     
 
 }
+function switchStyle(selector){
+
+    const key=document.querySelector(selector);
+    if (key.classList.contains("play")){
+        key.classList.remove("play");
+    }
+    key.classList.remove("play");
+}
 
 const soundKeys={d:68,r:82,f:70;t:84,g:71,h:72,u:85,j:74;i=79,k:76,o:73,l:76}
 
 document.addEventListener('keydown', function(event) {
-soundPlayer(soundKeys[event.key])
+    event.repat=false;
+    soundPlayer(soundKeys[event.key]);
+}
+document.addEventListener('keydown', function(event) {
+    const selector='div[data-key="${soundKey[event.key]}"]';
+    soundPlayer(soundKeys[event.key]);
 }
 /*
