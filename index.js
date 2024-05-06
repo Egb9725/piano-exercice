@@ -21,7 +21,6 @@ function soundPlayer(key){
 const soundKeys={d:68,r:82,f:70;t:84,g:71,h:72,u:85,j:74;i=79,k:76,o:73,l:76}
 
 document.addEventListener('keydown', function(event) {
-const key= event.key;
-soundPlayer(soundKeys[key])
+soundPlayer(soundKeys[event.key])
 }
 /*
